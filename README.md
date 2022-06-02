@@ -33,18 +33,20 @@ Your application should utilize ***BOTH*** your HTML/CSS and JS projects, refact
 
 ***TECHNICAL REQUIREMENTS***
 * your application will be available via **yarn dev**
-* your JS assignment code - "backend" for this project" - should now generate players and teams with information about them - name, surname, description  for players; player names, description for teams
+* your JS assignment code - fake "backend" for this project - should now generate players and teams with information about them - name, surname, description  for players; player names, description for teams
   * there should now be 1-3 second delay when requesting players/teams, ***per request, not per team/player***
   * there should be a 20% chance to get an error, ***per request, not per team/player***
   * loading state and error state must be handled appropriately
   * you should use either a short predefined list to generate from, or a specialized module (such as faker)
 * upper navbar should contain two links - to a list of players and to a list of teams
   * your application should contain routing to accomodate this
-* left navbar should now be a pagination component, used to navigate the whole list of players/teams, 15 per page, 300 total
+* your application should fetch 2000 players/teams
+* left navbar should now be a pagination component, used to navigate the whole list of players/teams, 20 per page
+ * you should split the whole list into pages locally
 * clicking on "details" button should show a modal window with a bigger version of the card that will fit all the details that may be cut off in small-format cards
 * Ramda must be utilized wherever possible
 * components should be reusable where possible
-* try to look for an optimal solution, especially regarding your bundler configuration
+* try to look for an optimal solution to problems that arise, especially regarding your bundler configuration
 
 
 </details>
