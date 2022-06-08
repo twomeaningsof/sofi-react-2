@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./MainNavbar.scss";
 
 const MainNavbar = ({ children, ...props }) => {
@@ -31,12 +32,12 @@ export const HamburgerMenu = () => {
   );
 };
 
-export const NavigationLink = ({ children, ...props }) => {
+export const NavigationLink = ({ children, path, ...props }) => {
   return (
     <li>
-      <a href="#home" className="navigation__link">
+      <Link to={path} className="navigation__link">
         {children}
-      </a>
+      </Link>
     </li>
   );
 };

@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import MainNavbar, {
   HamburgerMenu,
   NavigationLink,
@@ -5,9 +6,24 @@ import MainNavbar, {
 import PageTitle from "../components/PageTitle";
 import Card from "../components/Card";
 import FooterLink from "../components/FooterLink";
-import toggleSidebar from "../utils/toggleSidebar";
+import solve from "../api/index1";
+import { first } from "../api/data";
+import getRandomPlayers from "../api/getRandomPlayers";
+
+
 
 const PlayersPage = () => {
+  const [players, setPlayers] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [playersPerPage, setPlayersPerPage] = useState(20);
+
+  useEffect(() => {
+    setLoading(true);
+    setPlayers(getRandomPlayers());
+    setLoading(false);
+  }, [])
+
   return (
     <>
       <div className="wrapper">
@@ -20,24 +36,15 @@ const PlayersPage = () => {
         <header className="header">
           <MainNavbar>
             <HamburgerMenu />
-            <NavigationLink>Players</NavigationLink>
-            <NavigationLink>Teams</NavigationLink>
+            <NavigationLink path="/">Players</NavigationLink>
+            <NavigationLink path="/teams">Teams</NavigationLink>
           </MainNavbar>
           <PageTitle>Players</PageTitle>
         </header>
         <main className="content-wrapper">
-          <Card>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos
-            assumenda natus odit. Eos a eaque delectus porro vitae dolorem.
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae
-            nihil aliquam sapiente nulla, vero eum cupiditate?
-          </Card>
-          <Card>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos
-            assumenda natus odit. Eos a eaque delectus porro vitae dolorem.
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae
-            nihil aliquam sapiente nulla, vero eum cupiditate?
-          </Card>
+          {loading ? <div>Loading...</div> : players.map(({firstName, lastName, description}) => {
+            return <Card firstName={firstName} lastName={lastName} description={description}></Card>
+          })}
         </main>
         <footer className="footer">
           <div className="footer__column">
@@ -56,9 +63,7 @@ const PlayersPage = () => {
             </ul>
           </div>
         </footer>
-        <button className="button button--float" onclick={toggleSidebar}>
-          F
-        </button>
+        <button className="button button--float">F</button>
       </div>
     </>
   );
