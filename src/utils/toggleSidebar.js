@@ -1,19 +1,11 @@
 let mini = true;
 
-const toggleSidebar = () => {
-  const sidePanel = document.getElementById("side-panel");
-  const buttonAside = document.getElementsByClassName("button--aside");
+const toggleSidebar = (sidebar) => {
   if (mini) {
-    sidePanel.style.width = "200px";
-    [...buttonAside].map((button) => {
-      button.classList.remove("hidden");
-    });
+    sidebar.style.width = "120px";
     mini = false;
   } else {
-    sidePanel.style.width = "20px";
-    [...buttonAside].map((button) => {
-      button.classList.add("hidden");
-    });
+    sidebar.style.width = "25px";
     mini = true;
   }
 };

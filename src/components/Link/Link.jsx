@@ -1,6 +1,6 @@
-import "./FooterLink.scss";
+import "./Link.scss";
 
-const FooterLink = ({ children }) => {
+const Link = ({ children }) => {
   return (
     <li>
       <a href="#link1" className="footer__link">
@@ -10,4 +10,4 @@ const FooterLink = ({ children }) => {
   );
 };
 
-export default FooterLink;
+export default Link;

@@ -18,23 +18,30 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: 20px 32px;
+      padding: 20px 24px;
       border-radius: 0 7px 7px 0;
       background-color: rgba(255, 255, 255, 0.92);
     }
 
     &__title {
+      margin-bottom: 10px;
       font-size: 25px;
       font-weight: 500;
       letter-spacing: 1px;
     }
 
-    &__text {
+    &__description {
       margin: 17px 0;
       font-size: 17px;
       font-weight: 300;
-      line-height: 27px;
+      line-height: 24px;
       text-align: justify;
+      overflow: hidden;
+    }
+
+    &__info {
+      margin: 5px 0;
+      min-height: 20px;
       overflow: hidden;
     }
   }
@@ -80,8 +87,12 @@
       font-size: 29px;
     }
 
-    &__text {
+    &__description {
       font-size: 20px;
+    }
+
+    &__info {
+      font-size: 18px;
     }
   }
 }
@@ -107,7 +118,7 @@
       font-size: 38px;
     }
 
-    &__text {
+    &__description {
       font-size: 25px;
       line-height: 40px;
     }

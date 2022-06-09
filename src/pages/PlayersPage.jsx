@@ -1,69 +1,123 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import MainNavbar, {
   HamburgerMenu,
   NavigationLink,
 } from "../components/MainNavbar";
 import PageTitle from "../components/PageTitle";
 import Card from "../components/Card";
-import FooterLink from "../components/FooterLink";
-import solve from "../api/index1";
-import { first } from "../api/data";
+import Link from "../components/Link";
+import Button from "../components/Button";
+import Pagination from "../components/Pagination";
+import SidePanel from "../components/SidePanel";
 import getRandomPlayers from "../api/getRandomPlayers";
+import toggleSidebar from "../utils/toggleSidebar";
+import sortByName from "../utils/sortByName";
 
-
+let PageSize = 20;
 
 const PlayersPage = () => {
   const [players, setPlayers] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [playersPerPage, setPlayersPerPage] = useState(20);
+  const [error, setError] = useState(false);
+  const [currentPage, setCurrentPage] = useState(undefined);
+  const [sidebarToggled, setSidebarToggled] = useState(false);
+
+  const currentPlayersData = useMemo(() => {
+    const firstPageIndex = (currentPage - 1) * PageSize;
+    const lastPageIndex = firstPageIndex + PageSize;
+    return players.slice(firstPageIndex, lastPageIndex);
+  }, [currentPage]);
 
   useEffect(() => {
-    setLoading(true);
-    setPlayers(getRandomPlayers());
-    setLoading(false);
-  }, [])
+    const fetchAndSort = async () => {
+      setLoading(true);
+      const [data, error] = await getRandomPlayers(2000);
+      if (!error) {
+        setPlayers(sortByName(data));
+        setCurrentPage(1);
+      }
+      setError(error);
+      setLoading(false);
+    };
+    fetchAndSort();
+  }, []);
 
   return (
     <>
       <div className="wrapper">
-        <aside className="side-panel" id="side-panel">
-          <button className="button button--aside hidden">Button I</button>
-          <button className="button button--aside hidden">Button II</button>
-          <button className="button button--aside hidden">Button III</button>
-          <button className="button button--aside hidden">Button IV</button>
-        </aside>
+        <SidePanel
+          onMouseEnter={({ currentTarget }) => {
+            setSidebarToggled(true);
+            toggleSidebar(currentTarget);
+          }}
+          onMouseLeave={({ currentTarget }) => {
+            setSidebarToggled(false);
+            toggleSidebar(currentTarget);
+          }}
+        >
+          {sidebarToggled && !(error || loading) && (
+            <Pagination
+              currentPage={currentPage}
+              totalCount={players.length}
+              pageSize={PageSize}
+              onPageChange={(page) => setCurrentPage(page)}
+            />
+          )}
+        </SidePanel>
         <header className="header">
           <MainNavbar>
             <HamburgerMenu />
             <NavigationLink path="/">Players</NavigationLink>
             <NavigationLink path="/teams">Teams</NavigationLink>
           </MainNavbar>
-          <PageTitle>Players</PageTitle>
+          <PageTitle>
+            <abbr title="Ultimate Frisbee">UF</abbr> Players
+          </PageTitle>
         </header>
         <main className="content-wrapper">
-          {loading ? <div>Loading...</div> : players.map(({firstName, lastName, description}) => {
-            return <Card firstName={firstName} lastName={lastName} description={description}></Card>
-          })}
+          {error && <div>{error}</div>}
+          {loading && <div>Loading...</div>}
+          {!(error || loading)
+            ? currentPlayersData.map(
+                ({ name, score, position, description }, index) => (
+                  <Card
+                    key={index}
+                    name={name}
+                    score={score}
+                    position={position}
+                    description={description}
+                    variant="player"
+                  ></Card>
+                )
+              )
+            : null}
         </main>
         <footer className="footer">
           <div className="footer__column">
             <ul className="footer__links-wrapper">
-              <FooterLink>Link1</FooterLink>
-              <FooterLink>Link2</FooterLink>
-              <FooterLink>Link3</FooterLink>
+              <Link>Link1</Link>
+              <Link>Link2</Link>
+              <Link>Link3</Link>
             </ul>
           </div>
           <div className="footer__separator"></div>
           <div className="footer__column">
             <ul className="footer__links-wrapper">
-              <FooterLink>Link4</FooterLink>
-              <FooterLink>Link5</FooterLink>
-              <FooterLink>Link6</FooterLink>
+              <Link>Link4</Link>
+              <Link>Link5</Link>
+              <Link>Link6</Link>
             </ul>
           </div>
         </footer>
-        <button className="button button--float">F</button>
+        <Button
+          variant="float"
+          onClick={() => {
+            sidebarToggled ? setSidebarToggled(false) : setSidebarToggled(true);
+            toggleSidebar(document.getElementById("side-panel"));
+          }}
+        >
+          F
+        </Button>
       </div>
     </>
   );

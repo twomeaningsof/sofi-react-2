@@ -1,0 +1,76 @@
+.pagination-container {
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+
+  .pagination-item {
+    margin-top: 16px;
+    height: 32px;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.87);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    align-items: center;
+    letter-spacing: 0.01071em;
+    border-radius: 16px;
+    line-height: 1.43;
+    font-size: 18px;
+    min-width: 32px;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+
+    &.dots:hover {
+      background-color: transparent;
+      cursor: default;
+    }
+    &:hover {
+      cursor: pointer;
+    }
+
+    &.selected {
+      background-color: #f1cd70d8;
+    }
+
+    .arrow {
+      &::before {
+        position: relative;
+        top: 3pt;
+        content: "";
+        /* By using an em scale, the arrows will size with the font */
+        display: inline-block;
+        width: 0.4em;
+        height: 0.4em;
+        border-right: 0.12em solid rgba(0, 0, 0, 0.87);
+        border-top: 0.12em solid rgba(0, 0, 0, 0.87);
+      }
+
+      &.top {
+        transform: rotate(-45deg) translate(-50%);
+        top: 10pt;
+      }
+
+      &.bottom {
+        transform: rotate(135deg) translate(-50%);
+      }
+    }
+
+    &.disabled {
+      pointer-events: none;
+
+      .arrow::before {
+        border-right: 0.12em solid rgba(0, 0, 0, 0.43);
+        border-top: 0.12em solid rgba(0, 0, 0, 0.43);
+      }
+
+      &:hover {
+        background-color: transparent;
+        cursor: default;
+      }
+    }
+  }
+}

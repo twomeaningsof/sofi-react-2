@@ -39,9 +39,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@faker-js/faker", "npm:7.2.0"],\
             ["babel-loader", "virtual:05525ec65c45696a1870030d5fc2c5d464f3c77f62d53782cfdf3aaccb358fcffd6d7609720f9eb112e024aeb4c70a700f69439ab34b6798578be62eff298050#npm:8.2.5"],\
             ["babel-preset-react", "npm:6.24.1"],\
+            ["classnames", "npm:2.3.1"],\
             ["css-loader", "virtual:05525ec65c45696a1870030d5fc2c5d464f3c77f62d53782cfdf3aaccb358fcffd6d7609720f9eb112e024aeb4c70a700f69439ab34b6798578be62eff298050#npm:6.7.1"],\
             ["html-webpack-plugin", "virtual:05525ec65c45696a1870030d5fc2c5d464f3c77f62d53782cfdf3aaccb358fcffd6d7609720f9eb112e024aeb4c70a700f69439ab34b6798578be62eff298050#npm:5.5.0"],\
-            ["prettier", "npm:2.6.2"],\
             ["ramda", "npm:0.28.0"],\
             ["react", "npm:18.1.0"],\
             ["react-dom", "virtual:05525ec65c45696a1870030d5fc2c5d464f3c77f62d53782cfdf3aaccb358fcffd6d7609720f9eb112e024aeb4c70a700f69439ab34b6798578be62eff298050#npm:18.1.0"],\
@@ -49,6 +49,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["sass", "npm:1.52.2"],\
             ["sass-loader", "virtual:05525ec65c45696a1870030d5fc2c5d464f3c77f62d53782cfdf3aaccb358fcffd6d7609720f9eb112e024aeb4c70a700f69439ab34b6798578be62eff298050#npm:13.0.0"],\
             ["style-loader", "virtual:05525ec65c45696a1870030d5fc2c5d464f3c77f62d53782cfdf3aaccb358fcffd6d7609720f9eb112e024aeb4c70a700f69439ab34b6798578be62eff298050#npm:3.3.1"],\
+            ["uuid", "npm:8.3.2"],\
             ["webpack", "virtual:05525ec65c45696a1870030d5fc2c5d464f3c77f62d53782cfdf3aaccb358fcffd6d7609720f9eb112e024aeb4c70a700f69439ab34b6798578be62eff298050#npm:5.73.0"],\
             ["webpack-cli", "virtual:05525ec65c45696a1870030d5fc2c5d464f3c77f62d53782cfdf3aaccb358fcffd6d7609720f9eb112e024aeb4c70a700f69439ab34b6798578be62eff298050#npm:4.9.2"],\
             ["webpack-dev-server", "virtual:05525ec65c45696a1870030d5fc2c5d464f3c77f62d53782cfdf3aaccb358fcffd6d7609720f9eb112e024aeb4c70a700f69439ab34b6798578be62eff298050#npm:4.9.2"]\
@@ -1856,6 +1857,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/chrome-trace-event-npm-1.0.3-e0ae3dcd60-cb8b1fc7e8.zip/node_modules/chrome-trace-event/",\
           "packageDependencies": [\
             ["chrome-trace-event", "npm:1.0.3"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["classnames", [\
+        ["npm:2.3.1", {\
+          "packageLocation": "./.yarn/cache/classnames-npm-2.3.1-f2ae0a8d3c-14db8889d5.zip/node_modules/classnames/",\
+          "packageDependencies": [\
+            ["classnames", "npm:2.3.1"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -4370,15 +4380,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
-      ["prettier", [\
-        ["npm:2.6.2", {\
-          "packageLocation": "./.yarn/cache/prettier-npm-2.6.2-05918420da-48d08dde8e.zip/node_modules/prettier/",\
-          "packageDependencies": [\
-            ["prettier", "npm:2.6.2"]\
-          ],\
-          "linkType": "HARD"\
-        }]\
-      ]],\
       ["pretty-error", [\
         ["npm:4.0.0", {\
           "packageLocation": "./.yarn/cache/pretty-error-npm-4.0.0-7cca1fe4ad-a5b9137365.zip/node_modules/pretty-error/",\
@@ -5095,9 +5096,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@faker-js/faker", "npm:7.2.0"],\
             ["babel-loader", "virtual:05525ec65c45696a1870030d5fc2c5d464f3c77f62d53782cfdf3aaccb358fcffd6d7609720f9eb112e024aeb4c70a700f69439ab34b6798578be62eff298050#npm:8.2.5"],\
             ["babel-preset-react", "npm:6.24.1"],\
+            ["classnames", "npm:2.3.1"],\
             ["css-loader", "virtual:05525ec65c45696a1870030d5fc2c5d464f3c77f62d53782cfdf3aaccb358fcffd6d7609720f9eb112e024aeb4c70a700f69439ab34b6798578be62eff298050#npm:6.7.1"],\
             ["html-webpack-plugin", "virtual:05525ec65c45696a1870030d5fc2c5d464f3c77f62d53782cfdf3aaccb358fcffd6d7609720f9eb112e024aeb4c70a700f69439ab34b6798578be62eff298050#npm:5.5.0"],\
-            ["prettier", "npm:2.6.2"],\
             ["ramda", "npm:0.28.0"],\
             ["react", "npm:18.1.0"],\
             ["react-dom", "virtual:05525ec65c45696a1870030d5fc2c5d464f3c77f62d53782cfdf3aaccb358fcffd6d7609720f9eb112e024aeb4c70a700f69439ab34b6798578be62eff298050#npm:18.1.0"],\
@@ -5105,6 +5106,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["sass", "npm:1.52.2"],\
             ["sass-loader", "virtual:05525ec65c45696a1870030d5fc2c5d464f3c77f62d53782cfdf3aaccb358fcffd6d7609720f9eb112e024aeb4c70a700f69439ab34b6798578be62eff298050#npm:13.0.0"],\
             ["style-loader", "virtual:05525ec65c45696a1870030d5fc2c5d464f3c77f62d53782cfdf3aaccb358fcffd6d7609720f9eb112e024aeb4c70a700f69439ab34b6798578be62eff298050#npm:3.3.1"],\
+            ["uuid", "npm:8.3.2"],\
             ["webpack", "virtual:05525ec65c45696a1870030d5fc2c5d464f3c77f62d53782cfdf3aaccb358fcffd6d7609720f9eb112e024aeb4c70a700f69439ab34b6798578be62eff298050#npm:5.73.0"],\
             ["webpack-cli", "virtual:05525ec65c45696a1870030d5fc2c5d464f3c77f62d53782cfdf3aaccb358fcffd6d7609720f9eb112e024aeb4c70a700f69439ab34b6798578be62eff298050#npm:4.9.2"],\
             ["webpack-dev-server", "virtual:05525ec65c45696a1870030d5fc2c5d464f3c77f62d53782cfdf3aaccb358fcffd6d7609720f9eb112e024aeb4c70a700f69439ab34b6798578be62eff298050#npm:4.9.2"]\

@@ -3,6 +3,9 @@
     width: 30%;
     position: relative;
     background-color: #264653;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
   }
 
   .hamburger-menu {

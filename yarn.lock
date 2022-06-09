@@ -1443,6 +1443,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"classnames@npm:^2.3.1":
+  version: 2.3.1
+  resolution: "classnames@npm:2.3.1"
+  checksum: 14db8889d56c267a591f08b0834989fe542d47fac659af5a539e110cc4266694e8de86e4e3bbd271157dbd831361310a8293e0167141e80b0f03a0f175c80960
+  languageName: node
+  linkType: hard
+
 "clean-css@npm:^5.2.2":
   version: 5.3.0
   resolution: "clean-css@npm:5.3.0"
@@ -3544,15 +3551,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:^2.6.2":
-  version: 2.6.2
-  resolution: "prettier@npm:2.6.2"
-  bin:
-    prettier: bin-prettier.js
-  checksum: 48d08dde8e9fb1f5bccdd205baa7f192e9fc8bc98f86e1b97d919de804e28c806b0e6cc685e4a88211aa7987fa9668f30baae19580d87ced3ed0f2ec6572106f
-  languageName: node
-  linkType: hard
-
 "pretty-error@npm:^4.0.0":
   version: 4.0.0
   resolution: "pretty-error@npm:4.0.0"
@@ -4160,9 +4158,9 @@ __metadata:
     "@faker-js/faker": ^7.2.0
     babel-loader: ^8.2.5
     babel-preset-react: ^6.24.1
+    classnames: ^2.3.1
     css-loader: ^6.7.1
     html-webpack-plugin: ^5.5.0
-    prettier: ^2.6.2
     ramda: ^0.28.0
     react: ^18.1.0
     react-dom: ^18.1.0
@@ -4170,6 +4168,7 @@ __metadata:
     sass: ^1.52.2
     sass-loader: ^13.0.0
     style-loader: ^3.3.1
+    uuid: ^8.3.2
     webpack: ^5.73.0
     webpack-cli: ^4.9.2
     webpack-dev-server: ^4.9.1
