@@ -1,46 +1,24 @@
-import { useState, useEffect, useMemo } from "react";
-import MainNavbar, {
-  HamburgerMenu,
-  NavigationLink,
-} from "../components/MainNavbar";
+import { useState } from "react";
+import { addIndex, map } from "ramda";
+import Navbar, { HamburgerMenu, NavigationLink } from "../components/Navbar";
 import PageTitle from "../components/PageTitle";
 import Card from "../components/Card";
-import Link from "../components/Link";
 import Button from "../components/Button";
-import Pagination from "../components/Pagination";
 import SidePanel from "../components/SidePanel";
-import getRandomTeams from "../api/getRandomTeams";
+import Pagination from "../components/Pagination";
+import Footer, { FooterColumn, FooterSeparator } from "../components/Footer";
+import Link from "../components/Link";
 import toggleSidebar from "../utils/toggleSidebar";
-import sortByName from "../utils/sortByName";
+import useFetchAndSortTeams from "../hooks/useFetchAndSortTeams";
+import getCurrentPageData from "../utils/getCurrentPageData";
 
-let PageSize = 10;
+const pageSize = 10;
 
 const TeamsPage = () => {
-  const [teams, setTeams] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
   const [currentPage, setCurrentPage] = useState(undefined);
   const [sidebarToggled, setSidebarToggled] = useState(false);
-
-  const currentTeamsData = useMemo(() => {
-    const firstPageIndex = (currentPage - 1) * PageSize;
-    const lastPageIndex = firstPageIndex + PageSize;
-    return teams.slice(firstPageIndex, lastPageIndex);
-  }, [currentPage]);
-
-  useEffect(() => {
-    const fetchAndSort = async () => {
-      setLoading(true);
-      const [data, error] = await getRandomTeams(2000);
-      if (!error) {
-        setTeams(sortByName(data));
-        setCurrentPage(1);
-      }
-      setError(error);
-      setLoading(false);
-    };
-    fetchAndSort();
-  }, []);
+  const { teams, loading, error } = useFetchAndSortTeams(setCurrentPage);
+  const currentPageData = getCurrentPageData(teams, currentPage, pageSize);
 
   return (
     <>
@@ -59,26 +37,28 @@ const TeamsPage = () => {
             <Pagination
               currentPage={currentPage}
               totalCount={teams.length}
-              pageSize={PageSize}
+              pageSize={pageSize}
               onPageChange={(page) => setCurrentPage(page)}
             />
           )}
         </SidePanel>
         <header className="header">
-          <MainNavbar>
+          <Navbar>
             <HamburgerMenu />
             <NavigationLink path="/">Players</NavigationLink>
             <NavigationLink path="/teams">Teams</NavigationLink>
-          </MainNavbar>
+          </Navbar>
           <PageTitle>
-            <abbr title="Ultimate Frisbee">UF</abbr> Teams
+            <p>
+              <abbr title="Ultimate Frisbee">UF</abbr> Teams
+            </p>
           </PageTitle>
         </header>
         <main className="content-wrapper">
           {error && <div>{error}</div>}
           {loading && <div>Loading...</div>}
           {!(error || loading)
-            ? currentTeamsData.map(
+            ? addIndex(map)(
                 ({ name, playersList, score, description }, index) => (
                   <Card
                     key={index}
@@ -89,26 +69,22 @@ const TeamsPage = () => {
                     variant="team"
                   ></Card>
                 )
-              )
+              )(currentPageData)
             : null}
         </main>
-        <footer className="footer">
-          <div className="footer__column">
-            <ul className="footer__links-wrapper">
-              <Link>Link1</Link>
-              <Link>Link2</Link>
-              <Link>Link3</Link>
-            </ul>
-          </div>
-          <div className="footer__separator"></div>
-          <div className="footer__column">
-            <ul className="footer__links-wrapper">
-              <Link>Link4</Link>
-              <Link>Link5</Link>
-              <Link>Link6</Link>
-            </ul>
-          </div>
-        </footer>
+        <Footer>
+          <FooterColumn>
+            <Link>Link1</Link>
+            <Link>Link2</Link>
+            <Link>Link3</Link>
+          </FooterColumn>
+          <FooterSeparator />
+          <FooterColumn>
+            <Link>Link4</Link>
+            <Link>Link5</Link>
+            <Link>Link6</Link>
+          </FooterColumn>
+        </Footer>
         <Button
           variant="float"
           onClick={() => {

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { addIndex, map } from "ramda";
 import "./Card.scss";
 import Modal from "../Modal";
 import Button from "../Button";
@@ -24,15 +25,14 @@ const Card = ({ name, score, position, playersList, description, variant }) => {
           </>
         ) : null}
         {variant === "team" ? (
-          <>
-            <p className="card__info">
-              <ul>
-                {playersList.map((player) => (
-                  <li>{player}</li>
-                ))}
-              </ul>
-            </p>
-          </>
+          <ul className="card__info">
+            {addIndex(map)(
+              (player, index) => (
+                <li key={index}>{player}</li>
+              ),
+              playersList
+            )}
+          </ul>
         ) : null}
         <Button variant="card" onClick={handleIsModalHidden}>
           MORE

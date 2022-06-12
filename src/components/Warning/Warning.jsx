@@ -1,7 +1,7 @@
 import "./Warning.scss";
 
-const Warning = ({ children }) => {
-  return <figure className="warning">{children}</figure>;
-};
+const Warning = ({ children }) => (
+  <figure className="warning">{children}</figure>
+);
 
 export default Warning;

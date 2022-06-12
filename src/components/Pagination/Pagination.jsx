@@ -1,7 +1,8 @@
+import { addIndex, map } from "ramda";
 import "./Pagination.scss";
 import classnames from "classnames";
 import { v4 as uuidv4 } from "uuid";
-import { usePagination, DOTS } from "../../hooks/usePagination.jsx";
+import usePagination, { dots } from "../../hooks/usePagination.js";
 
 const Pagination = ({
   onPageChange,
@@ -18,7 +19,6 @@ const Pagination = ({
     pageSize,
   });
 
-  // If there are less than 2 times in pagination range we shall not render the component
   if (currentPage === 0 || paginationRange.length < 2) {
     return null;
   }
@@ -31,12 +31,11 @@ const Pagination = ({
     onPageChange(currentPage - 1);
   };
 
-  let lastPage = paginationRange[paginationRange.length - 1];
+  const lastPage = paginationRange[paginationRange.length - 1];
   return (
     <ul
       className={classnames("pagination-container", { [className]: className })}
     >
-      {/* Top navigation arrow */}
       <li
         className={classnames("pagination-item", {
           disabled: currentPage === 1,
@@ -46,9 +45,8 @@ const Pagination = ({
       >
         <div className="arrow top" />
       </li>
-      {paginationRange.map((pageNumber) => {
-        // If the pageItem is a DOT, render the DOTS unicode character
-        if (pageNumber === DOTS) {
+      {addIndex(map)((pageNumber) => {
+        if (pageNumber === dots) {
           return (
             <li className="pagination-item dots" key={uuidv4()}>
               &#8230;
@@ -56,7 +54,6 @@ const Pagination = ({
           );
         }
 
-        // Render our Page Pills
         return (
           <li
             className={classnames("pagination-item", {
@@ -68,8 +65,7 @@ const Pagination = ({
             {pageNumber}
           </li>
         );
-      })}
-      {/*  Bottom Navigation arrow */}
+      }, paginationRange)}
       <li
         className={classnames("pagination-item", {
           disabled: currentPage === lastPage,

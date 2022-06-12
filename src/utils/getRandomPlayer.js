@@ -6,12 +6,14 @@ function getRandomPlayer() {
   const gender = faker.name.gender(true);
   const firstName = faker.name.firstName(gender.toLowerCase());
   const lastName = faker.name.lastName();
-  const position = ["handler", "cutter"][Math.round(Math.random())];
   const favoriteAnimal = faker.animal.type();
+  const name = `${firstName} ${lastName}`;
+  const score = getRandomNumber(0, 60);
+  const position = ["handler", "cutter"][Math.round(Math.random())];
 
   return {
-    name: `${firstName} ${lastName}`,
-    score: getRandomNumber(0, 60),
+    name,
+    score,
     position,
     description: `${firstName} lives in ${faker.address.city()} and is a big fan of ${setPluralForm(
       favoriteAnimal

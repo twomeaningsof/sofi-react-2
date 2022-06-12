@@ -1,3 +1,4 @@
+import { addIndex, map } from "ramda";
 import "./Modal.scss";
 import Button from "../Button";
 
@@ -7,9 +8,9 @@ const Modal = ({
   name,
   score,
   position,
+  playersList,
   description,
   variant,
-  playersList,
 }) => {
   if (isModalHidden) {
     return null;
@@ -21,21 +22,17 @@ const Modal = ({
         <div className="modal-content__title">{name}</div>
         <div className="modal-content__body">
           <div className="modal-content__body-info">
-            {variant === "player" ? (
-              <>
-                <p>Score: {score}</p>
-                <p>Position: {position}</p>
-              </>
-            ) : null}
+            <p> Score: {score}</p>
+            {variant === "player" ? <p>Position: {position}</p> : null}
             {variant === "team" ? (
-              <>
-                <p>Score: {score}</p>
-                <ul>
-                  {playersList.map((player) => (
-                    <li>{player}</li>
-                  ))}
-                </ul>
-              </>
+              <ul>
+                {addIndex(map)(
+                  (player, index) => (
+                    <li key={index}>{player}</li>
+                  ),
+                  playersList
+                )}
+              </ul>
             ) : null}
           </div>
           <p>{description}</p>
