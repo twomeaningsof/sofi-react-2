@@ -1,7 +1,7 @@
 import { addIndex, map } from "ramda";
-import "./Pagination.scss";
-import classnames from "classnames";
 import { v4 as uuidv4 } from "uuid";
+import classnames from "classnames";
+import "./Pagination.scss";
 import usePagination, { dots } from "../../hooks/usePagination.js";
 
 const Pagination = ({
