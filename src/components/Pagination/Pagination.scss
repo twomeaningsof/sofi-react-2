@@ -1,25 +1,23 @@
 .pagination-container {
   display: flex;
-  flex-direction: column;
-  list-style-type: none;
   padding: 0;
   margin: 0;
+  flex-direction: column;
+  list-style-type: none;
 
   .pagination-item {
-    margin-top: 16px;
     height: 32px;
+    min-width: 32px;
+    margin-top: 16px;
     text-align: center;
-    color: rgba(0, 0, 0, 0.87);
     display: flex;
     justify-content: center;
     align-items: center;
-    box-sizing: border-box;
-    align-items: center;
-    letter-spacing: 0.01071em;
     border-radius: 16px;
     line-height: 1.43;
+    letter-spacing: 0.01071em;
     font-size: 18px;
-    min-width: 32px;
+    color: rgba(0, 0, 0, 0.87);
     user-select: none;
     -moz-user-select: none;
     -webkit-user-select: none;
@@ -38,13 +36,12 @@
 
     .arrow {
       &::before {
-        position: relative;
-        top: 3pt;
-        content: "";
-        /* By using an em scale, the arrows will size with the font */
-        display: inline-block;
         width: 0.4em;
         height: 0.4em;
+        top: 3pt;
+        position: relative;
+        content: "";
+        display: inline-block;
         border-right: 0.12em solid rgba(0, 0, 0, 0.87);
         border-top: 0.12em solid rgba(0, 0, 0, 0.87);
       }
