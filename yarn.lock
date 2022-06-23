@@ -3303,6 +3303,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"fluture@npm:^14.0.0":
+  version: 14.0.0
+  resolution: "fluture@npm:14.0.0"
+  dependencies:
+    sanctuary-show: ^2.0.0
+    sanctuary-type-identifiers: ^3.0.0
+  checksum: 588046dec013cc6967ff99b07143173ccdc8e8256ca40e039ebc7511328983629ea73030d43849bb2b36dee747db2dba093558ccbb515ff980b47194e4fbb184
+  languageName: node
+  linkType: hard
+
 "focus-lock@npm:^0.11.2":
   version: 0.11.2
   resolution: "focus-lock@npm:0.11.2"
@@ -5330,6 +5340,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"sanctuary-show@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "sanctuary-show@npm:2.0.0"
+  checksum: 1513fc71060b4dfc4773d7cee9567b22c7b415bf1f36ae194f33f671fdf3ec55f52c5a053ab41238e24d24bae48db7386b64cf6d275dfb48feac6caa24fb7488
+  languageName: node
+  linkType: hard
+
+"sanctuary-type-identifiers@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "sanctuary-type-identifiers@npm:3.0.0"
+  checksum: b31937f36d42ee3c6d41d52b4e39b12d4d7cc81fc1383909a338e7c5960dee1629473083a25831aab000d15b7eecfbc8e3e5a6b1ba0d20063027b4fc43e84be9
+  languageName: node
+  linkType: hard
+
 "sass-loader@npm:^13.0.0":
   version: 13.0.0
   resolution: "sass-loader@npm:13.0.0"
@@ -5623,6 +5647,7 @@ __metadata:
     babel-preset-react: ^6.24.1
     classnames: ^2.3.1
     css-loader: ^6.7.1
+    fluture: ^14.0.0
     framer-motion: ^6
     html-webpack-plugin: ^5.5.0
     ramda: ^0.28.0

@@ -45,6 +45,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["babel-preset-react", "npm:6.24.1"],\
             ["classnames", "npm:2.3.1"],\
             ["css-loader", "virtual:05525ec65c45696a1870030d5fc2c5d464f3c77f62d53782cfdf3aaccb358fcffd6d7609720f9eb112e024aeb4c70a700f69439ab34b6798578be62eff298050#npm:6.7.1"],\
+            ["fluture", "npm:14.0.0"],\
             ["framer-motion", "virtual:05525ec65c45696a1870030d5fc2c5d464f3c77f62d53782cfdf3aaccb358fcffd6d7609720f9eb112e024aeb4c70a700f69439ab34b6798578be62eff298050#npm:6.3.11"],\
             ["html-webpack-plugin", "virtual:05525ec65c45696a1870030d5fc2c5d464f3c77f62d53782cfdf3aaccb358fcffd6d7609720f9eb112e024aeb4c70a700f69439ab34b6798578be62eff298050#npm:5.5.0"],\
             ["ramda", "npm:0.28.0"],\
@@ -4969,6 +4970,17 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["fluture", [\
+        ["npm:14.0.0", {\
+          "packageLocation": "./.yarn/cache/fluture-npm-14.0.0-2d397e9fa3-588046dec0.zip/node_modules/fluture/",\
+          "packageDependencies": [\
+            ["fluture", "npm:14.0.0"],\
+            ["sanctuary-show", "npm:2.0.0"],\
+            ["sanctuary-type-identifiers", "npm:3.0.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["focus-lock", [\
         ["npm:0.11.2", {\
           "packageLocation": "./.yarn/cache/focus-lock-npm-0.11.2-bebce9a7c0-f1a62ea7bb.zip/node_modules/focus-lock/",\
@@ -7401,6 +7413,24 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD"\
         }]\
       ]],\
+      ["sanctuary-show", [\
+        ["npm:2.0.0", {\
+          "packageLocation": "./.yarn/cache/sanctuary-show-npm-2.0.0-f7d2902df1-1513fc7106.zip/node_modules/sanctuary-show/",\
+          "packageDependencies": [\
+            ["sanctuary-show", "npm:2.0.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["sanctuary-type-identifiers", [\
+        ["npm:3.0.0", {\
+          "packageLocation": "./.yarn/cache/sanctuary-type-identifiers-npm-3.0.0-040df49310-b31937f36d.zip/node_modules/sanctuary-type-identifiers/",\
+          "packageDependencies": [\
+            ["sanctuary-type-identifiers", "npm:3.0.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
       ["sass", [\
         ["npm:1.52.2", {\
           "packageLocation": "./.yarn/cache/sass-npm-1.52.2-ad4574e1be-d5efcbad4b.zip/node_modules/sass/",\
@@ -7729,6 +7759,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["babel-preset-react", "npm:6.24.1"],\
             ["classnames", "npm:2.3.1"],\
             ["css-loader", "virtual:05525ec65c45696a1870030d5fc2c5d464f3c77f62d53782cfdf3aaccb358fcffd6d7609720f9eb112e024aeb4c70a700f69439ab34b6798578be62eff298050#npm:6.7.1"],\
+            ["fluture", "npm:14.0.0"],\
             ["framer-motion", "virtual:05525ec65c45696a1870030d5fc2c5d464f3c77f62d53782cfdf3aaccb358fcffd6d7609720f9eb112e024aeb4c70a700f69439ab34b6798578be62eff298050#npm:6.3.11"],\
             ["html-webpack-plugin", "virtual:05525ec65c45696a1870030d5fc2c5d464f3c77f62d53782cfdf3aaccb358fcffd6d7609720f9eb112e024aeb4c70a700f69439ab34b6798578be62eff298050#npm:5.5.0"],\
             ["ramda", "npm:0.28.0"],\
