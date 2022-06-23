@@ -11,6 +11,8 @@ import {
   __,
   lt,
   multiply,
+  cond,
+  always,
 } from "ramda";
 
 export const dots = "...";
@@ -49,27 +51,37 @@ const usePagination = ({
 
     const firstPageIndex = 1;
     const lastPageIndex = totalPageCount;
-
-    if (!shouldShowLeftDots && shouldShowRightDots) {
-      let leftItemCount = pipe(multiply(2), add(3))(siblingCount);
-      let leftRange = range(1, leftItemCount);
-
-      return [...leftRange, dots, totalPageCount];
-    }
-
-    if (shouldShowLeftDots && !shouldShowRightDots) {
-      let rightItemCount = pipe(multiply(2), add(3))(siblingCount);
-      let rightRange = range(
-        totalPageCount - rightItemCount + 1,
-        totalPageCount
-      );
-      return [firstPageIndex, dots, ...rightRange];
-    }
-
-    if (shouldShowLeftDots && shouldShowRightDots) {
-      let middleRange = range(leftSiblingIndex, rightSiblingIndex);
-      return [firstPageIndex, dots, ...middleRange, dots, lastPageIndex];
-    }
+    return cond([
+      [
+        always(!shouldShowLeftDots && shouldShowRightDots),
+        always([
+          ...range(1, pipe(multiply(2), add(3))(siblingCount)),
+          dots,
+          totalPageCount,
+        ]),
+      ],
+      [
+        always(shouldShowLeftDots && !shouldShowRightDots),
+        always([
+          firstPageIndex,
+          dots,
+          ...range(
+            totalPageCount - pipe(multiply(2), add(3))(siblingCount) + 1,
+            totalPageCount
+          ),
+        ]),
+      ],
+      [
+        always(shouldShowLeftDots && shouldShowRightDots),
+        always([
+          firstPageIndex,
+          dots,
+          ...range(leftSiblingIndex, rightSiblingIndex),
+          dots,
+          lastPageIndex,
+        ]),
+      ],
+    ])();
   }, [totalCount, pageSize, siblingCount, currentPage]);
 
   return paginationRange;

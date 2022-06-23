@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import getRandomTeams from "../api/getRandomTeams";
 import sortByName from "../utils/sortByName";
 
-const useFetchAndSortTeams = (setCurrentPage) => {
+const useFetchAndSortTeams = (setCurrentPage, retry, setRetry) => {
   const [teams, setTeams] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -11,17 +11,16 @@ const useFetchAndSortTeams = (setCurrentPage) => {
     const fetchAndSort = async () => {
       setLoading(true);
       const [data, error] = await getRandomTeams(2000);
-
       if (!error) {
         setTeams(sortByName(data));
         setCurrentPage(1);
       }
-
       setError(error);
       setLoading(false);
     };
     fetchAndSort();
-  }, []);
+    setRetry(false);
+  }, [retry]);
 
   return {
     teams,

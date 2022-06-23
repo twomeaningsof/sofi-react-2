@@ -1,11 +1,15 @@
 import { useMemo } from "react";
-import { multiply, add, slice } from "ramda";
+import { multiply, add, slice, subtract } from "ramda";
 
 const currentPageData = (data, currentPage, pageSize) =>
-  useMemo(() => {
-    const firstPageIndex = multiply(currentPage - 1, pageSize);
-    const lastPageIndex = add(firstPageIndex, pageSize);
-    return slice(firstPageIndex, lastPageIndex, data);
-  }, [currentPage]);
+  useMemo(
+    () =>
+      slice(
+        multiply(subtract(currentPage, 1), pageSize),
+        add(multiply(subtract(currentPage, 1), pageSize), pageSize),
+        data
+      ),
+    [currentPage]
+  );
 
 export default currentPageData;

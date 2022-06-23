@@ -1,8 +1,9 @@
-import { addIndex, map } from "ramda";
 import { v4 as uuidv4 } from "uuid";
 import classnames from "classnames";
-import "./Pagination.scss";
+import { ifElse, always, equals } from "ramda";
 import usePagination, { dots } from "../../hooks/usePagination.js";
+import mapIndexed from "../../utils/mapIndexed";
+import "./Pagination.scss";
 
 const Pagination = ({
   onPageChange,
@@ -32,6 +33,7 @@ const Pagination = ({
   };
 
   const lastPage = paginationRange[paginationRange.length - 1];
+
   return (
     <ul
       className={classnames("pagination-container", { [className]: className })}
@@ -45,27 +47,29 @@ const Pagination = ({
       >
         <div className="arrow top" />
       </li>
-      {addIndex(map)((pageNumber) => {
-        if (pageNumber === dots) {
-          return (
-            <li className="pagination-item dots" key={uuidv4()}>
-              &#8230;
-            </li>
-          );
-        }
-
-        return (
-          <li
-            className={classnames("pagination-item", {
-              selected: pageNumber === currentPage,
-            })}
-            onClick={() => onPageChange(pageNumber)}
-            key={uuidv4()}
-          >
-            {pageNumber}
-          </li>
-        );
-      }, paginationRange)}
+      {mapIndexed(
+        (pageNumber) =>
+          ifElse(
+            equals(dots),
+            always(
+              <li className="pagination-item dots" key={uuidv4()}>
+                &#8230;
+              </li>
+            ),
+            always(
+              <li
+                className={classnames("pagination-item", {
+                  selected: pageNumber === currentPage,
+                })}
+                onClick={() => onPageChange(pageNumber)}
+                key={uuidv4()}
+              >
+                {pageNumber}
+              </li>
+            )
+          )(pageNumber),
+        paginationRange
+      )}
       <li
         className={classnames("pagination-item", {
           disabled: currentPage === lastPage,

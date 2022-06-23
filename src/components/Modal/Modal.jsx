@@ -1,44 +1,21 @@
-import { addIndex, map } from "ramda";
-import "./Modal.scss";
+import { useContext } from "react";
+import CardContext from "../../context/CardContext";
 import Button from "../Button";
+import "./Modal.scss";
 
-const Modal = ({
-  isModalHidden,
-  closeModal,
-  name,
-  score,
-  position,
-  playersList,
-  description,
-  variant,
-}) => {
-  if (isModalHidden) {
+const Modal = ({ children }) => {
+  const { hidden, handleHidden } = useContext(CardContext);
+
+  if (hidden) {
     return null;
   }
 
   return (
     <div className="modal">
       <div className="modal-content">
-        <div className="modal-content__title">{name}</div>
-        <div className="modal-content__body">
-          <div className="modal-content__body-info">
-            <p> Score: {score}</p>
-            {variant === "player" ? <p>Position: {position}</p> : null}
-            {variant === "team" ? (
-              <ul>
-                {addIndex(map)(
-                  (player, index) => (
-                    <li key={index}>{player}</li>
-                  ),
-                  playersList
-                )}
-              </ul>
-            ) : null}
-          </div>
-          <p>{description}</p>
-        </div>
+        {children}
         <div className="modal-content__footer">
-          <Button variant="modal" onClick={closeModal}>
+          <Button variant="modal" onClick={handleHidden}>
             <p>CLOSE</p>
           </Button>
         </div>

@@ -1,10 +1,11 @@
-import { getPromise } from "../utils/getPromise";
-import getRandomPlayer from "../utils/getRandomPlayer";
+import { always } from "ramda";
+import { getPromise } from "./getPromise";
+import getRandomPlayer from "./getRandomPlayer";
 
 const getRandomPlayers = async (numberOfPlayers) =>
   await getPromise(
     "getRandomPlayers",
-    () => Array.from({ length: numberOfPlayers }).map(() => getRandomPlayer()),
+    always(Array.from({ length: numberOfPlayers }).map(getRandomPlayer)),
     "createRandomPlayer"
   );
 export default getRandomPlayers;

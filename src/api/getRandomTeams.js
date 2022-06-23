@@ -1,10 +1,11 @@
-import { getPromise } from "../utils/getPromise";
-import getRandomTeam from "../utils/getRandomTeam";
+import { always } from "ramda";
+import { getPromise } from "./getPromise";
+import getRandomTeam from "./getRandomTeam";
 
 const getRandomTeams = async (numberOfTeams) =>
   await getPromise(
     "getRandomTeams",
-    () => Array.from({ length: numberOfTeams }).map(() => getRandomTeam()),
+    always(Array.from({ length: numberOfTeams }).map(getRandomTeam)),
     "createRandomTeam"
   );
 

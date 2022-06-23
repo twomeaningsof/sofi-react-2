@@ -1,11 +1,5 @@
-import { sort } from "ramda";
+import { sortBy, toLower, pipe, prop } from "ramda";
 
-const sortByName = sort((a, b) =>
-  a.name.toLowerCase() < b.name.toLowerCase()
-    ? -1
-    : b.name.toLowerCase() > a.name.toLowerCase()
-    ? 1
-    : 0
-);
+const sortByName = sortBy(pipe(prop("name"), toLower));
 
 export default sortByName;

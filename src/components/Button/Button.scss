@@ -42,6 +42,16 @@
   background-color: #ffffff77;
 }
 
+.button--retry {
+  width: 110px;
+  height: 40px;
+  margin-top: 8px;
+  align-self: center;
+  flex-shrink: 0;
+  border-color: rgb(238, 57, 57);
+  background-color: rgb(250, 68, 68);
+}
+
 @media screen and (min-width: 769px) {
   .button--float {
     display: none;
