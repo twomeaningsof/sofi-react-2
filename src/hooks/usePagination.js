@@ -1,7 +1,5 @@
 import { useMemo } from "react";
 import {
-  pipe,
-  flip,
   subtract,
   add,
   divide,
@@ -18,9 +16,9 @@ import {
 export const dots = "...";
 
 const range = (start, end) =>
-  pipe(flip(subtract), add(1), (length) =>
-    Array.from({ length }, (_, idx) => idx + start)
-  )(start, end);
+  subtract(end, start)
+  |> add(1)
+  |> ((length) => Array.from({ length }, (_, idx) => idx + start));
 
 const usePagination = ({
   totalCount,
@@ -29,25 +27,21 @@ const usePagination = ({
   currentPage,
 }) => {
   const paginationRange = useMemo(() => {
-    const totalPageCount = pipe(divide, Math.ceil)(totalCount, pageSize);
+    const totalPageCount = divide(totalCount, pageSize) |> Math.ceil;
     const totalPageNumbers = add(siblingCount, 5);
 
     if (totalPageNumbers >= totalPageCount) {
       return range(1, totalPageCount);
     }
 
-    const leftSiblingIndex = pipe(subtract, max(1))(currentPage, siblingCount);
+    const leftSiblingIndex = subtract(currentPage, siblingCount) |> max(1);
 
-    const rightSiblingIndex = pipe(add, min(totalPageCount))(
-      currentPage,
-      siblingCount
-    );
+    const rightSiblingIndex =
+      add(currentPage, siblingCount) |> min(totalPageCount);
 
     const shouldShowLeftDots = gt(leftSiblingIndex, 2);
-    const shouldShowRightDots = pipe(
-      subtract(__, 2),
-      lt(rightSiblingIndex)
-    )(totalPageCount);
+    const shouldShowRightDots =
+      subtract(totalPageCount, 2) |> lt(rightSiblingIndex);
 
     const firstPageIndex = 1;
     const lastPageIndex = totalPageCount;
@@ -55,7 +49,7 @@ const usePagination = ({
       [
         always(!shouldShowLeftDots && shouldShowRightDots),
         always([
-          ...range(1, pipe(multiply(2), add(3))(siblingCount)),
+          ...range(1, multiply(2, siblingCount) |> add(3)),
           dots,
           totalPageCount,
         ]),
@@ -66,7 +60,7 @@ const usePagination = ({
           firstPageIndex,
           dots,
           ...range(
-            totalPageCount - pipe(multiply(2), add(3))(siblingCount) + 1,
+            totalPageCount - (multiply(2, siblingCount) |> add(3)) + 1,
             totalPageCount
           ),
         ]),

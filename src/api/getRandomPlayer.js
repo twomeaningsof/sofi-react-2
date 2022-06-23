@@ -1,5 +1,5 @@
 import { faker } from "@faker-js/faker";
-import { concat, pipe } from "ramda";
+import { concat } from "ramda";
 import getRandomNumber from "./getRandomNumber";
 import setPluralForm from "./setPluralForm";
 import getPlayerDescription from "./getPlayerDescription";
