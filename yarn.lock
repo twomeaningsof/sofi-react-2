@@ -269,6 +269,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@babel/plugin-proposal-pipeline-operator@npm:^7.18.2":
+  version: 7.18.2
+  resolution: "@babel/plugin-proposal-pipeline-operator@npm:7.18.2"
+  dependencies:
+    "@babel/helper-plugin-utils": ^7.17.12
+    "@babel/plugin-syntax-pipeline-operator": ^7.17.12
+  peerDependencies:
+    "@babel/core": ^7.0.0-0
+  checksum: eb83145e55586c80eb838805e9c0d901d04f692e4af0a50d2975787b807d26659831de78316ba5a6e3557699fa5e69240d179b6ec75945dfaa1236d2ae2270a2
+  languageName: node
+  linkType: hard
+
 "@babel/plugin-syntax-jsx@npm:^7.12.13, @babel/plugin-syntax-jsx@npm:^7.17.12":
   version: 7.17.12
   resolution: "@babel/plugin-syntax-jsx@npm:7.17.12"
@@ -277,6 +289,17 @@ __metadata:
   peerDependencies:
     "@babel/core": ^7.0.0-0
   checksum: 6acd0bbca8c3e0100ad61f3b7d0b0111cd241a0710b120b298c4aa0e07be02eccbcca61ede1e7678ade1783a0979f20305b62263df6767fa3fbf658670d82af5
+  languageName: node
+  linkType: hard
+
+"@babel/plugin-syntax-pipeline-operator@npm:^7.17.12":
+  version: 7.17.12
+  resolution: "@babel/plugin-syntax-pipeline-operator@npm:7.17.12"
+  dependencies:
+    "@babel/helper-plugin-utils": ^7.17.12
+  peerDependencies:
+    "@babel/core": ^7.0.0-0
+  checksum: 3751be2e1ea4c19d37c54c365a5dfc0eac959713a3e7e60789a659dff4772764c8109fd78dc1da70b2cde818d7ec45385f0da07a9d78add4d1429cfdec7d3871
   languageName: node
   linkType: hard
 
@@ -5590,6 +5613,7 @@ __metadata:
   dependencies:
     "@babel/core": ^7.18.2
     "@babel/plugin-proposal-class-properties": ^7.17.12
+    "@babel/plugin-proposal-pipeline-operator": ^7.18.2
     "@babel/preset-react": ^7.17.12
     "@chakra-ui/react": ^2.2.1
     "@emotion/react": ^11
