@@ -9,7 +9,7 @@ const currentPageData = (data, currentPage, pageSize) =>
         add(multiply(subtract(currentPage, 1), pageSize), pageSize),
         data
       ),
-    [currentPage]
+    [currentPage, data, pageSize]
   );
 
 export default currentPageData;

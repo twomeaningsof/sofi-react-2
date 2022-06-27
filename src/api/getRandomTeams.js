@@ -1,9 +1,9 @@
 import { always } from "ramda";
-import { getPromise } from "./getPromise";
+import getFuture from "./getFuture";
 import getRandomTeam from "./getRandomTeam";
 
-const getRandomTeams = async (numberOfTeams) =>
-  await getPromise(
+const getRandomTeams = (numberOfTeams) =>
+  getFuture(
     "getRandomTeams",
     always(Array.from({ length: numberOfTeams }).map(getRandomTeam)),
     "createRandomTeam"

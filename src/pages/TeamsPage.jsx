@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { fork } from "fluture";
 import Layout from "../components/Layout";
 import SidePanel from "../components/SidePanel";
 import Pagination from "../components/Pagination";
@@ -12,14 +13,12 @@ const TeamsPage = ({ pageSize }) => {
   const [currentPage, setCurrentPage] = useState(undefined);
   const [sidebarToggled, setSidebarToggled] = useState(false);
   const [retry, setRetry] = useState(false);
-  const { teams, loading, error } = useFetchAndSortTeams(
-    setCurrentPage,
-    retry,
-    setRetry
-  );
+  const { teams, loading, error, fetchAndSortTeamsFuture, setTeams, setError } =
+    useFetchAndSortTeams(setCurrentPage, retry, setRetry);
   const currentPageData = getCurrentPageData(teams, currentPage, pageSize);
 
-  const handleReload = () => setRetry(true);
+  const handleReload = () =>
+    fetchAndSortTeamsFuture |> fork(setError)(setTeams);
 
   return (
     <Layout
