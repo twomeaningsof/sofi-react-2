@@ -1,15 +1,20 @@
 import Modal from "..";
+import {
+  ModalContentTitle,
+  ModalContentBody,
+  ModalContentBodyInfo,
+} from "../Modal.jsx";
 
 const PlayerModal = ({ name, score, position, description }) => (
   <Modal>
-    <div className="modal-content__title">{name}</div>
-    <div className="modal-content__body">
-      <div className="modal-content__body-info">
+    <ModalContentTitle>{name}</ModalContentTitle>
+    <ModalContentBody>
+      <ModalContentBodyInfo>
         <p>Score: {score}</p>
         <p>Position: {position}</p>
-      </div>
+      </ModalContentBodyInfo>
       <p>{description}</p>
-    </div>
+    </ModalContentBody>
   </Modal>
 );
 

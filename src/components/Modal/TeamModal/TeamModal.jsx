@@ -1,11 +1,16 @@
 import Modal from "..";
+import {
+  ModalContentTitle,
+  ModalContentBody,
+  ModalContentBodyInfo,
+} from "../Modal.jsx";
 import mapIndexed from "../../../utils/mapIndexed";
 
 const TeamModal = ({ playersList, name, score, description }) => (
   <Modal>
-    <div className="modal-content__title">{name}</div>
-    <div className="modal-content__body">
-      <div className="modal-content__body-info">
+    <ModalContentTitle>{name}</ModalContentTitle>
+    <ModalContentBody>
+      <ModalContentBodyInfo>
         <p>Score: {score}</p>
         <ul>
           {mapIndexed(
@@ -15,9 +20,9 @@ const TeamModal = ({ playersList, name, score, description }) => (
             playersList
           )}
         </ul>
-      </div>
+      </ModalContentBodyInfo>
       <p>{description}</p>
-    </div>
+    </ModalContentBody>
   </Modal>
 );
 

@@ -1,7 +1,9 @@
-import "./Warning.scss";
+import styled from "styled-components";
 
-const Warning = ({ children }) => (
-  <figure className="warning">{children}</figure>
-);
+const Warning = styled.figure`
+  @media screen and (min-width: 320px) {
+    display: none;
+  }
+`;
 
 export default Warning;

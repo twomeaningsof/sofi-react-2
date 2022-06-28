@@ -1,15 +1,25 @@
+import styled from "styled-components";
 import Button from "../Button";
-import "./Error.scss";
+
+const ErrorWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const ErrorMessageWrapper = styled.div`
+  width: 100%;
+  margin-bottom: 20px;
+`;
 
 const Error = ({ error, handleReload }) => (
-  <div className="error-wrapper">
-    <div className="error-message-wrapper">
+  <ErrorWrapper>
+    <ErrorMessageWrapper>
       <b>Error:</b> {error}{" "}
-    </div>
+    </ErrorMessageWrapper>
     <Button variant="retry" onClick={handleReload}>
       RETRY
     </Button>
-  </div>
+  </ErrorWrapper>
 );
 
 export default Error;

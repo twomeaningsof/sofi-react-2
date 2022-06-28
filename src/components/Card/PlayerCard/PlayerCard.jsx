@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { CardTitle, CardParagraphInfo, CardDescription } from "../Card.jsx";
 import CardContext from "../../../context/CardContext";
 import PlayerModal from "../../Modal/PlayerModal";
 import Button from "../../Button";
@@ -8,10 +9,10 @@ const PlayerCard = ({ name, score, position, description }) => {
 
   return (
     <>
-      <header className="card__title">{name}</header>
-      <p className="card__info">Score: {score}</p>
-      <p className="card__info">Position: {position}</p>
-      <p className="card__description">{description}</p>
+      <CardTitle>{name}</CardTitle>
+      <CardParagraphInfo>Score: {score}</CardParagraphInfo>
+      <CardParagraphInfo>Position: {position}</CardParagraphInfo>
+      <CardDescription>{description}</CardDescription>
       <Button variant="card" onClick={handleHidden}>
         MORE
       </Button>

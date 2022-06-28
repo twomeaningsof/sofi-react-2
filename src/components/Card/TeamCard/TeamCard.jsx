@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { CardTitle, CardUnorderedListInfo } from "../Card.jsx";
 import CardContext from "../../../context/CardContext";
 import Button from "../../Button";
 import TeamModal from "../../Modal/TeamModal";
@@ -9,15 +10,15 @@ const TeamCard = ({ playersList, name, score, description }) => {
 
   return (
     <>
-      <header className="card__title">{name}</header>
-      <ul className="card__info">
+      <CardTitle>{name}</CardTitle>
+      <CardUnorderedListInfo>
         {mapIndexed(
           (player, index) => (
             <li key={index}>{player}</li>
           ),
           playersList
         )}
-      </ul>
+      </CardUnorderedListInfo>
       <Button variant="card" onClick={handleHidden}>
         MORE
       </Button>

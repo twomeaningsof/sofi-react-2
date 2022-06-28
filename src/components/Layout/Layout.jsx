@@ -1,4 +1,4 @@
-import "./Layout.scss";
+import styled from "styled-components";
 import Navbar, { HamburgerMenu, NavigationLink } from "../Navbar";
 import PageTitle from "../PageTitle";
 import Footer, { FooterColumn, FooterSeparator } from "../Footer";
@@ -6,10 +6,45 @@ import Link from "../Link";
 import Button from "../Button";
 import toggleSidebar from "../../utils/toggleSidebar";
 
+const LayoutWrapper = styled.div`
+  @media screen {
+    display: none;
+  }
+
+  @media screen and (min-width: 320px) {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    background-color: #2a9d8f;
+`;
+
+const LayoutHeader = styled.header`
+  @media screen and (min-width: 320px) {
+    height: 170px;
+    display: flex;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.137);}
+
+  @media screen and (min-width: 769px) {
+    flex-wrap: wrap;
+`;
+
+const ContentWrapper = styled.main`
+  @media screen and (min-width: 320px) {
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch;
+    flex-wrap: wrap;
+    margin: 50px 40px 0 40px;
+  }
+`;
+
 const Layout = ({ pageTitle, sidebarToggled, setSidebarToggled, children }) => {
   return (
-    <div className="wrapper">
-      <header className="header">
+    <LayoutWrapper>
+      <LayoutHeader className="header">
         <Navbar>
           <HamburgerMenu />
           <NavigationLink path="/">Players</NavigationLink>
@@ -20,8 +55,8 @@ const Layout = ({ pageTitle, sidebarToggled, setSidebarToggled, children }) => {
             <abbr title="Ultimate Frisbee">UF</abbr> {pageTitle}
           </p>
         </PageTitle>
-      </header>
-      <main className="content-wrapper">{children}</main>
+      </LayoutHeader>
+      <ContentWrapper>{children}</ContentWrapper>
       <Footer>
         <FooterColumn>
           <Link>Link1</Link>
@@ -44,7 +79,7 @@ const Layout = ({ pageTitle, sidebarToggled, setSidebarToggled, children }) => {
       >
         F
       </Button>
-    </div>
+    </LayoutWrapper>
   );
 };
 
