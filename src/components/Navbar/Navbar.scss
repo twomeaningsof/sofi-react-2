@@ -137,6 +137,10 @@
 }
 
 @media screen and (min-width: 1201px) {
+  .navigation-wrapper {
+    height: 35%;
+  }
+
   .navigation {
     &__link {
       font-size: 32px;
