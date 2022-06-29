@@ -1,5 +1,6 @@
 import styled, { css } from "styled-components";
 import { cond, always, equals } from "ramda";
+import { device } from "../../constants/device";
 
 const Button = styled.button`
   width: 140px;
@@ -47,7 +48,7 @@ const Button = styled.button`
           border-radius: 55px;
           background-color: #ffffff77;
 
-          @media screen and (min-width: 769px) {
+          @media screen and ${device.tablet} {
             display: none;
           }
         `),

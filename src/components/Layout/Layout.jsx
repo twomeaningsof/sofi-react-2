@@ -4,6 +4,7 @@ import PageTitle from "../PageTitle";
 import Footer, { FooterColumn, FooterSeparator } from "../Footer";
 import Link from "../Link";
 import Button from "../Button";
+import { device } from "../../constants/device";
 import toggleSidebar from "../../utils/toggleSidebar";
 
 const LayoutWrapper = styled.div`
@@ -11,27 +12,30 @@ const LayoutWrapper = styled.div`
     display: none;
   }
 
-  @media screen and (min-width: 320px) {
+  @media screen and ${device.mobile} {
     min-height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     position: relative;
     background-color: #2a9d8f;
+  }
 `;
 
 const LayoutHeader = styled.header`
-  @media screen and (min-width: 320px) {
+  @media screen and ${device.mobile} {
     height: 170px;
     display: flex;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.137);}
+    border-bottom: 1px solid rgba(0, 0, 0, 0.137);
+  }
 
-  @media screen and (min-width: 769px) {
+  @media screen and ${device.tablet} {
     flex-wrap: wrap;
+  }
 `;
 
 const ContentWrapper = styled.main`
-  @media screen and (min-width: 320px) {
+  @media screen and ${device.mobile} {
     flex-grow: 1;
     display: flex;
     justify-content: space-around;

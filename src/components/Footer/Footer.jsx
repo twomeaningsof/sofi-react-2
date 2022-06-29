@@ -1,7 +1,8 @@
 import styled from "styled-components";
+import { device } from "../../constants/device";
 
 const Footer = styled.footer`
-  @media screen and (min-width: 320px) {
+  @media screen and ${device.mobile} {
     width: 100%;
     padding: 20px;
     margin-top: 60px;
@@ -10,7 +11,7 @@ const Footer = styled.footer`
     background-color: #264653;
   }
 
-  @media screen and (min-width: 769px) {
+  @media screen and ${device.tablet} {
     flex-direction: row;
     align-items: center;
   }
@@ -19,7 +20,7 @@ const Footer = styled.footer`
 export default Footer;
 
 const FooterColumnWrapper = styled.div`
-  @media screen and (min-width: 320px) {
+  @media screen and ${device.mobile} {
     width: 100%;
     height: 180px;
     display: flex;
@@ -29,7 +30,7 @@ const FooterColumnWrapper = styled.div`
 `;
 
 const FooterLinksWrapper = styled.ul`
-  @media screen and (min-width: 320px) {
+  @media screen and ${device.mobile} {
     height: 100%;
     margin: 0;
     padding: 0;
@@ -47,7 +48,7 @@ export const FooterColumn = ({ children }) => (
 );
 
 export const FooterSeparator = styled.div`
-  @media screen and (min-width: 320px) {
+  @media screen and ${device.mobile} {
     display: none;
     width: 1px;
     height: 65%;
@@ -55,7 +56,7 @@ export const FooterSeparator = styled.div`
     border-color: rgba(245, 245, 245, 0.445);
   }
 
-  @media screen and (min-width: 769px) {
+  @media screen and ${device.tablet} {
     width: 1px;
     height: 130px;
     display: inline-block;

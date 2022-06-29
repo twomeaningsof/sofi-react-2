@@ -1,7 +1,8 @@
 import styled from "styled-components";
+import { device } from "../../constants/device";
 
 const Warning = styled.figure`
-  @media screen and (min-width: 320px) {
+  @media screen and ${device.mobile} {
     display: none;
   }
 `;

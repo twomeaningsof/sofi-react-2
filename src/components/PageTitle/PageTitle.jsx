@@ -1,7 +1,8 @@
 import styled from "styled-components";
+import { device } from "../../constants/device";
 
 const TitleWrapper = styled.h1`
-  @media screen and (min-width: 320px) {
+  @media screen and ${device.mobile} {
     width: 70%;
     margin: 0;
     display: flex;
@@ -18,22 +19,22 @@ const TitleWrapper = styled.h1`
     -moz-user-select: none;
     -webkit-user-select: none;
   }
-  @media screen and (min-width: 769px) {
+  @media screen and ${device.tablet} {
     width: 100%;
     height: 70%;
     font-size: 60px;
   }
-  @media screen and (min-width: 1201px) {
+  @media screen and ${device.laptopM} {
     font-size: 65px;
   }
-  @media screen and (min-width: 2000px) {
+  @media screen and ${device.desktop} {
     font-size: 90px;
     letter-spacing: 30px;
   }
 `;
 
 const TitleContent = styled.span`
-  @media screen and (min-width: 320px) {
+  @media screen and ${device.mobile} {
     margin: 0 50px;
   }
 `;

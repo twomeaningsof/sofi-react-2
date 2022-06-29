@@ -1,7 +1,8 @@
 import styled from "styled-components";
+import { device } from "../../constants/device";
 
 const FooterLink = styled.a`
-  @media screen and (min-width: 320px) {
+  @media screen and ${device.mobile} {
     position: relative;
     margin: 10px;
     font-size: 16px;
@@ -28,11 +29,11 @@ const FooterLink = styled.a`
     }
   }
 
-  @media screen and (min-width: 1201px) {
+  @media screen and ${device.laptopM} {
     font-size: 26px;
   }
 
-  @media screen and (min-width: 2000px) {
+  @media screen and ${device.desktop} {
     font-size: 29px;
   }
 `;

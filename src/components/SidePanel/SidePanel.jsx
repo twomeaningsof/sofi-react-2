@@ -1,7 +1,8 @@
 import styled from "styled-components";
+import { device } from "../../constants/device";
 
 const SidePanelStyles = styled.aside`
-  @media screen and (min-width: 320px) {
+  @media screen and ${device.mobile} {
     width: 25px;
     height: 50vh;
     display: flex;
@@ -19,7 +20,7 @@ const SidePanelStyles = styled.aside`
     overflow-x: hidden;
   }
 
-  @media screen and (min-width: 769px) {
+  @media screen and ${device.tablet} {
     visibility: visible;
     left: 0;
     border-radius: 0 7px 7px 0;
