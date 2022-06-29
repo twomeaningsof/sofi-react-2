@@ -11,7 +11,7 @@ const TeamCard = ({ playersList, name, score, description }) => {
   return (
     <>
       <CardTitle>{name}</CardTitle>
-      <CardUnorderedListInfo>
+      <CardUnorderedListInfo as="ul">
         {mapIndexed(
           (player, index) => (
             <li key={index}>{player}</li>

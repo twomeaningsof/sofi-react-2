@@ -102,17 +102,7 @@ export const CardParagraphInfo = styled.p`
   }
 `;
 
-export const CardUnorderedListInfo = styled.ul`
-  @media screen and (min-width: 320px) {
-    margin: 5px 0;
-    min-height: 20px;
-    overflow: hidden;
-  }
-
-  @media screen and (min-width: 1201px) {
-    font-size: 18px;
-  }
-`;
+export const CardUnorderedListInfo = styled(CardParagraphInfo)``;
 
 export const CardDescription = styled.p`
   @media screen and (min-width: 320px) {
