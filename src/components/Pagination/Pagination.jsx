@@ -11,7 +11,6 @@ const Pagination = ({
   siblingCount = 1,
   currentPage,
   pageSize,
-  className,
 }) => {
   const paginationRange = usePagination({
     currentPage,
@@ -35,9 +34,7 @@ const Pagination = ({
   const lastPage = paginationRange[paginationRange.length - 1];
 
   return (
-    <ul
-      className={classnames("pagination-container", { [className]: className })}
-    >
+    <ul className={"pagination-container"}>
       <li
         className={classnames("pagination-item", {
           disabled: currentPage === 1,
