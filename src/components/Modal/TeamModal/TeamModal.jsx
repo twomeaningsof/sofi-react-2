@@ -12,10 +12,12 @@ const TeamModal = ({ playersList, name, score, description }) => (
     <ModalContentBody>
       <ModalContentBodyInfo>
         <p>Score: {score}</p>
-        <ul>
+        <ul style={{ paddingLeft: 18 }}>
           {mapIndexed(
             (player, index) => (
-              <li key={index}>{player}</li>
+              <li key={index} style={{ marginTop: 6 }}>
+                {player}
+              </li>
             ),
             playersList
           )}

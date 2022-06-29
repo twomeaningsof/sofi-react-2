@@ -102,7 +102,9 @@ export const CardParagraphInfo = styled.p`
   }
 `;
 
-export const CardUnorderedListInfo = styled(CardParagraphInfo)``;
+export const CardUnorderedListInfo = styled(CardParagraphInfo)`
+  padding-left: 18px;
+`;
 
 export const CardDescription = styled.p`
   @media screen and (min-width: 320px) {
