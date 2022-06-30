@@ -3,7 +3,7 @@ import setPluralForm from "./setPluralForm";
 import capitalize from "./capitalize";
 
 const getPersonalPronoun = ifElse(equals("Male"), always("he"), always("she"));
-const getPossesiveAdjective = ifElse(
+const getPossessiveAdjective = ifElse(
   equals("Male"),
   always("his"),
   always("her")
@@ -37,7 +37,7 @@ const getColorVehicleSentence = (color, vehicle, gender) =>
     always(""),
     always(
       `${capitalize(
-        getPossesiveAdjective(gender)
+        getPossessiveAdjective(gender)
       )} favorite color is ${color}, and to prove that ${getPersonalPronoun(
         gender
       )} owns a ${vehicle} in that color.`
@@ -49,9 +49,9 @@ const getUltimateFrisbeeSentence = (position, gender) =>
     isNil,
     always(""),
     always(
-      `When it comes to our Ultimate Frisbee team ${getPossesiveAdjective(
+      `When it comes to our Ultimate Frisbee team ${getPossessiveAdjective(
         gender
-      )} position is ${position} and ${getPossesiveAdjective(
+      )} position is ${position} and ${getPossessiveAdjective(
         gender
       )} main attribute is for sure ${
         ["speed", "agility"][Math.round(Math.random())]
@@ -69,7 +69,7 @@ const getPlayerDescription = (
   vehicle,
   position
 ) =>
-  join("", [
+  join(" ", [
     getDefaultSentence(firstName, city, favoriteAnimal),
     getMusicGenreSentence(musicGenre, gender),
     getColorVehicleSentence(color, vehicle, gender),
