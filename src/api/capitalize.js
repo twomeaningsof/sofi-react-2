@@ -1,15 +1,5 @@
-import { split, join, ifElse, always } from "ramda";
-import mapIndexed from "../utils/mapIndexed";
+import { over, lensIndex, toUpper, join, pipe } from "ramda";
 
-const capitalize = (word) =>
-  split("", word)
-  |> mapIndexed((letter, index) =>
-    ifElse(
-      always(index),
-      always(letter.toLowerCase()),
-      always(letter.toUpperCase())
-    )(letter, index)
-  )
-  |> join("");
+const capitalize = pipe(over(lensIndex(0), toUpper), join(""));
 
 export default capitalize;
