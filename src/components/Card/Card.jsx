@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ifElse, always } from "ramda";
+import { not } from "ramda";
 import styled from "styled-components";
 import CardContext from "../../context/CardContext";
 import { device } from "../../constants/device";
@@ -129,11 +129,7 @@ export const CardDescription = styled.p`
 
 const Card = ({ children }) => {
   const [hidden, setHidden] = useState(true);
-  const handleHidden = ifElse(
-    always(hidden === true),
-    () => setHidden(false),
-    () => setHidden(true)
-  );
+  const handleHidden = () => hidden |> not |> setHidden;
 
   return (
     <CardWrapper>
