@@ -1,3 +1,4 @@
+import styled from "styled-components";
 import Modal from "..";
 import {
   ModalContentTitle,
@@ -6,22 +7,28 @@ import {
 } from "../Modal.jsx";
 import mapIndexed from "../../../utils/mapIndexed";
 
+const ModalContentBodyUnorderedList = styled.ul`
+  padding-left: 18px;
+`;
+
+const ModalContentBodyListElement = styled.li`
+  margin-top: 6px;
+`;
+
 const TeamModal = ({ playersList, name, score, description }) => (
   <Modal>
     <ModalContentTitle>{name}</ModalContentTitle>
     <ModalContentBody>
       <ModalContentBodyInfo>
         <p>Score: {score}</p>
-        <ul style={{ paddingLeft: 18 }}>
-          {mapIndexed(
-            (player, index) => (
-              <li key={index} style={{ marginTop: 6 }}>
+        <ModalContentBodyUnorderedList>
+          {playersList
+            |> mapIndexed((player, index) => (
+              <ModalContentBodyListElement key={player + index}>
                 {player}
-              </li>
-            ),
-            playersList
-          )}
-        </ul>
+              </ModalContentBodyListElement>
+            ))}
+        </ModalContentBodyUnorderedList>
       </ModalContentBodyInfo>
       <p>{description}</p>
     </ModalContentBody>
