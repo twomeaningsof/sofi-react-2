@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { device } from "../../constants/device";
 
-const FooterLink = styled.a`
+const LinkStyled = styled.a`
   @media screen and ${device.mobile} {
     position: relative;
     margin: 10px;
@@ -38,10 +38,6 @@ const FooterLink = styled.a`
   }
 `;
 
-const Link = ({ children }) => (
-  <li>
-    <FooterLink href="#">{children}</FooterLink>
-  </li>
-);
+const Link = ({ children }) => <LinkStyled href="#">{children}</LinkStyled>;
 
 export default Link;

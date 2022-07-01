@@ -95,7 +95,7 @@ const ModalContentFooter = styled.div`
   }
 `;
 
-const Modal = ({ children }) => {
+const Modal = ({ name, children }) => {
   const { hidden, handleHidden } = useContext(CardContext);
 
   if (hidden) {
@@ -105,7 +105,8 @@ const Modal = ({ children }) => {
   return (
     <ModalWrapper>
       <ModalContentWrapper>
-        {children}
+        <ModalContentTitle>{name}</ModalContentTitle>
+        <ModalContentBody>{children}</ModalContentBody>
         <ModalContentFooter>
           <Button variant="modal" onClick={handleHidden}>
             <p>CLOSE</p>

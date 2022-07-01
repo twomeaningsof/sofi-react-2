@@ -1,31 +1,30 @@
 import { useState, useEffect } from "react";
 import { encase, fork, and, lastly, chain } from "fluture";
 import andTap from "../utils/andTap";
-import getRandomPlayers from "../api/getRandomPlayers";
 import sortByName from "../utils/sortByName";
 
-const useFetchAndSortPlayers = (setCurrentPage) => {
-  const [players, setPlayers] = useState([]);
+const useFetchAndSortPlayers = (setCurrentPage, apiFn, count) => {
+  const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-  const fetchAndSortPlayersFuture =
+  const fetchAndSortDataFuture =
     encase(setLoading)(true)
     |> and(encase(setError)(false))
-    |> and(getRandomPlayers(2000))
+    |> and(apiFn(count))
     |> chain(encase(sortByName))
     |> andTap(encase(setCurrentPage)(1))
     |> lastly(encase(setLoading)(false));
 
   useEffect(() => {
-    fetchAndSortPlayersFuture |> fork(setError)(setPlayers);
+    fetchAndSortDataFuture |> fork(setError)(setData);
   }, []);
 
   return {
-    players,
+    data,
     loading,
     error,
-    fetchAndSortPlayersFuture,
-    setPlayers,
+    fetchAndSortDataFuture,
+    setData,
     setError,
   };
 };

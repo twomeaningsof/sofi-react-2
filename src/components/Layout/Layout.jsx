@@ -1,11 +1,12 @@
 import styled from "styled-components";
+import { not } from "ramda";
 import Navbar, { HamburgerMenu, NavigationLink } from "../Navbar";
 import PageTitle from "../PageTitle";
 import Footer, { FooterColumn, FooterSeparator } from "../Footer";
 import Link from "../Link";
 import Button from "../Button";
 import { device } from "../../constants/device";
-import toggleSidebar from "../../utils/toggleSidebar";
+import handleToggleSidebar from "../../utils/handleToggleSidebar";
 
 const LayoutWrapper = styled.div`
   @media screen {
@@ -48,7 +49,7 @@ const ContentWrapper = styled.main`
 const Layout = ({ pageTitle, sidebarToggled, setSidebarToggled, children }) => {
   return (
     <LayoutWrapper>
-      <LayoutHeader className="header">
+      <LayoutHeader>
         <Navbar>
           <HamburgerMenu />
           <NavigationLink path="/">Players</NavigationLink>
@@ -63,22 +64,37 @@ const Layout = ({ pageTitle, sidebarToggled, setSidebarToggled, children }) => {
       <ContentWrapper>{children}</ContentWrapper>
       <Footer>
         <FooterColumn>
-          <Link>Link1</Link>
-          <Link>Link2</Link>
-          <Link>Link3</Link>
+          <li>
+            <Link>Link1</Link>
+          </li>
+          <li>
+            <Link>Link2</Link>
+          </li>
+          <li>
+            <Link>Link3</Link>
+          </li>
         </FooterColumn>
         <FooterSeparator />
         <FooterColumn>
-          <Link>Link4</Link>
-          <Link>Link5</Link>
-          <Link>Link6</Link>
+          <li>
+            <Link>Link4</Link>
+          </li>
+          <li>
+            <Link>Link5</Link>
+          </li>
+          <li>
+            <Link>Link6</Link>
+          </li>
         </FooterColumn>
       </Footer>
       <Button
         variant="float"
         onClick={() => {
-          sidebarToggled ? setSidebarToggled(false) : setSidebarToggled(true);
-          toggleSidebar(document.getElementById("side-panel"));
+          handleToggleSidebar(
+            document.getElementById("side-panel"),
+            sidebarToggled,
+            setSidebarToggled
+          );
         }}
       >
         F

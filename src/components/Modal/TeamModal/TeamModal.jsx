@@ -1,10 +1,6 @@
 import styled from "styled-components";
 import Modal from "..";
-import {
-  ModalContentTitle,
-  ModalContentBody,
-  ModalContentBodyInfo,
-} from "../Modal.jsx";
+import { ModalContentBodyInfo } from "../Modal.jsx";
 import mapIndexed from "../../../utils/mapIndexed";
 
 const ModalContentBodyUnorderedList = styled.ul`
@@ -16,22 +12,19 @@ const ModalContentBodyListElement = styled.li`
 `;
 
 const TeamModal = ({ playersList, name, score, description }) => (
-  <Modal>
-    <ModalContentTitle>{name}</ModalContentTitle>
-    <ModalContentBody>
-      <ModalContentBodyInfo>
-        <p>Score: {score}</p>
-        <ModalContentBodyUnorderedList>
-          {playersList
-            |> mapIndexed((player, index) => (
-              <ModalContentBodyListElement key={player + index}>
-                {player}
-              </ModalContentBodyListElement>
-            ))}
-        </ModalContentBodyUnorderedList>
-      </ModalContentBodyInfo>
-      <p>{description}</p>
-    </ModalContentBody>
+  <Modal name={name}>
+    <ModalContentBodyInfo>
+      <p>Score: {score}</p>
+      <ModalContentBodyUnorderedList>
+        {playersList
+          |> mapIndexed((player, index) => (
+            <ModalContentBodyListElement key={player + index}>
+              {player}
+            </ModalContentBodyListElement>
+          ))}
+      </ModalContentBodyUnorderedList>
+    </ModalContentBodyInfo>
+    <p>{description}</p>
   </Modal>
 );
 

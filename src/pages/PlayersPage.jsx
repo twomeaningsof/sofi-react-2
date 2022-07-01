@@ -4,27 +4,28 @@ import Layout from "../components/Layout";
 import SidePanel from "../components/SidePanel";
 import Pagination from "../components/Pagination";
 import Content from "../components/Content";
-import useFetchAndSortPlayers from "../hooks/useFetchAndSortPlayers";
+import useFetchAndSortData from "../hooks/useFetchAndSortData";
+import getRandomPlayers from "../api/getRandomPlayers";
 import getCurrentPageData from "../utils/getCurrentPageData";
-import toggleSidebar from "../utils/toggleSidebar";
-import shouldRenderPagination from "../utils/shouldRenderPagination";
+import handleToggleSidebar from "../utils/handleToggleSidebar";
+import shouldRenderSidePanel from "../utils/shouldRenderSidePanel";
 
 const PlayersPage = ({ pageSize }) => {
   const [currentPage, setCurrentPage] = useState(undefined);
   const [sidebarToggled, setSidebarToggled] = useState(false);
   const [retry, setRetry] = useState(false);
   const {
-    players,
+    data: players,
     loading,
     error,
-    fetchAndSortPlayersFuture,
-    setPlayers,
+    fetchAndSortDataFuture,
+    setData: setPlayers,
     setError,
-  } = useFetchAndSortPlayers(setCurrentPage, retry, setRetry);
+  } = useFetchAndSortData(setCurrentPage, getRandomPlayers, 2000);
   const currentPageData = getCurrentPageData(players, currentPage, pageSize);
 
   const handleReload = () =>
-    fetchAndSortPlayersFuture |> fork(setError)(setPlayers);
+    fetchAndSortDataFuture |> fork(setError)(setPlayers);
 
   return (
     <Layout
@@ -32,29 +33,25 @@ const PlayersPage = ({ pageSize }) => {
       sidebarToggled={sidebarToggled}
       setSidebarToggled={setSidebarToggled}
     >
-      <SidePanel
-        onMouseEnter={({ currentTarget }) => {
-          setSidebarToggled(true);
-          toggleSidebar(currentTarget);
-        }}
-        onMouseLeave={({ currentTarget }) => {
-          setSidebarToggled(false);
-          toggleSidebar(currentTarget);
-        }}
-      >
-        {shouldRenderPagination({
-          sidebarToggled,
-          error,
-          loading,
-        }) && (
-          <Pagination
-            currentPage={currentPage}
-            totalCount={players.length}
-            pageSize={pageSize}
-            onPageChange={(page) => setCurrentPage(page)}
-          />
-        )}
-      </SidePanel>
+      {shouldRenderSidePanel({ data: players, error, loading }) && (
+        <SidePanel
+          onMouseEnter={({ currentTarget }) => {
+            handleToggleSidebar(currentTarget, false, setSidebarToggled);
+          }}
+          onMouseLeave={({ currentTarget }) => {
+            handleToggleSidebar(currentTarget, true, setSidebarToggled);
+          }}
+        >
+          {sidebarToggled && (
+            <Pagination
+              currentPage={currentPage}
+              totalCount={players.length}
+              pageSize={pageSize}
+              onPageChange={(page) => setCurrentPage(page)}
+            />
+          )}
+        </SidePanel>
+      )}
       <Content
         loading={loading}
         error={error}

@@ -1,19 +1,16 @@
 import { ifElse, always } from "ramda";
 
-let mini = true;
-
-const toggleSidebar = (sidebar) => {
+const toggleSidebar = (sidebar, sidebarToggled, setSidebarToggled) =>
   ifElse(
-    always(mini),
+    always(sidebarToggled),
     () => {
-      sidebar.style.width = "120px";
-      mini = false;
+      setSidebarToggled(false);
+      sidebar.style.width = "25px";
     },
     () => {
-      sidebar.style.width = "25px";
-      mini = true;
+      setSidebarToggled(true);
+      sidebar.style.width = "120px";
     }
-  )(sidebar);
-};
+  )();
 
 export default toggleSidebar;
